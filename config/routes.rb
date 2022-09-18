@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :products
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :carts
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+# API routing
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :carts, only: [ :index ]
+      resources :products, only: [ :index ]
+    end
+  end
 end
