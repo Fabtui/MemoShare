@@ -1,8 +1,8 @@
 const SELECT_CART = 'SELECT_CART'
 
-const cartsIndexReducer = (state, action) => {
+const selectCartReducer = (state, action) => {
  if (state === undefined) {
- return [];
+ return null;
  }
  switch (action.type) {
   case SELECT_CART:
@@ -11,4 +11,4 @@ const cartsIndexReducer = (state, action) => {
     return state;
  }
 };
-export default cartsIndexReducer;
+export default selectCartReducer;

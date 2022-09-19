@@ -10,7 +10,8 @@ class CartElement extends React.Component {
   }
 
   render () {
-    return <h4 onClick={this.handleClick} id={this.props.cart.id}>{this.props.cart.created_at}</h4>
+    const dateString = new Date(this.props.cart.created_at).toDateString();
+    return <h4 onClick={this.handleClick} id={this.props.cart.id}>{dateString}</h4>
   }
 }
 
