@@ -1,11 +1,9 @@
 const SET_CARTS = 'SET_CARTS'
 
-const cartsReducer = (state, action) => {
+const cartsIndexReducer = (state, action) => {
  if (state === undefined) {
- // Reducer initialisation
  return [];
  }
- // TODO: handle some actions
  switch (action.type) {
   case SET_CARTS:
     return action.payload;
@@ -13,4 +11,4 @@ const cartsReducer = (state, action) => {
     return state;
  }
 };
-export default cartsReducer;
+export default cartsIndexReducer;
