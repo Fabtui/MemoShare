@@ -1,5 +1,5 @@
 import React from 'react'
-import { setCarts } from '../actions/index';
+import { setCarts, setProducts } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CartElement from '../components/cart_element';
@@ -8,6 +8,7 @@ class CartIndex extends React.Component {
 
   UNSAFE_componentWillMount() {
     this.props.setCarts();
+    this.props.setProducts();
   }
 
   render () {
@@ -20,6 +21,7 @@ class CartIndex extends React.Component {
 function mapDispatchToProps(dispach) {
   return bindActionCreators(
     { setCarts: setCarts,
+      setProducts: setProducts
   },
   dispach
   );
@@ -28,6 +30,7 @@ function mapDispatchToProps(dispach) {
 function mapStateToProps(reduxState) {
   return {
     carts: reduxState.carts,
+    products: reduxState.products
   }
 }
 

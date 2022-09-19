@@ -13,3 +13,19 @@ export function selectCart(cart) {
     payload: cart
   }
 }
+
+export function setProducts() {
+ const promise = fetch('/api/v1/products')
+  .then(response => response.json());
+  return {
+    type: 'SET_PRODUCTS',
+    payload: promise
+  }
+}
+
+export function selectProducts(products) {
+  return {
+    type: 'SELECT_PRODUCT',
+    payload: products
+  }
+}
