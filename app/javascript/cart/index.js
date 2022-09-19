@@ -6,10 +6,13 @@ import { createRoot } from 'react-dom/client';
 import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import cartsIndexReducer from './reducers/cart_index_reducer'
+import selectCartReducer from './reducers/cart_select_reducer'
 import CartIndex from './containers/cart_index'
+import CartShow from './components/cart_show'
 
 const reducers = combineReducers({
-  carts: cartsIndexReducer
+  carts: cartsIndexReducer,
+  selectedCart: selectCartReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -23,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   root.render(
     <Provider store={store}>
       <CartIndex/>
+      <CartShow/>
     </Provider>
   )
 })
