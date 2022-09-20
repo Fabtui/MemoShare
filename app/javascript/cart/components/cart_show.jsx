@@ -14,7 +14,7 @@ class CartShow extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  displayNewEntry = (name) => {
+  updateCart = () => {
     document.querySelector('#form_input').value = ''
     this.props.setProducts()
   }
@@ -29,7 +29,7 @@ class CartShow extends React.Component {
     const token = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = token
     axios.post(url, {product: {name: this.state.input, cart_id: this.props.selectedCart.id}})
-      .then(resp => this.displayNewEntry(resp.data.name))
+      .then(this.updateCart)
       .catch(error => console.log(error))
   }
 

@@ -15,12 +15,16 @@ class CartIndex extends React.Component {
     this.props.setProducts();
   }
 
+  updateCarts = () => {
+    this.props.setCarts()
+  }
+
   createCart = () => {
     const url = `/carts`;
     const token = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = token
     axios.post(url, {cart: {}})
-      .then(resp => this.displayNewEntry(resp.data.name))
+      .then(this.updateCarts)
       .catch(error => console.log(error))
   }
 
