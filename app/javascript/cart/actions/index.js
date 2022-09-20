@@ -22,10 +22,3 @@ export function setProducts() {
     payload: promise
   }
 }
-
-export function selectProducts(products) {
-  return {
-    type: 'SELECT_PRODUCT',
-    payload: products
-  }
-}
