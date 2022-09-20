@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import ProductShow from '../components/product_show'
+import axios from 'axios'
 
 class CartShow extends React.Component {
   constructor(props) {
@@ -11,24 +12,21 @@ class CartShow extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  displayNewEntry = (name) => {
+    const productList = document.querySelector('#product_list')
+    productList.insertAdjacentHTML('beforeend', `<h1>${name}</h1>`)
+    document.querySelector('#form_input').value = ''
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     const url = `/products`;
-    fetch(url, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: {product: JSON.stringify(e.target.value)},
-    })
-      .then((data) => {
-        if (data.ok) {
-          // this.reloadBeers();
-          return data.json();
-        }
-        throw new Error("Network error.");
-      })
-      .catch((err) => message.error("Error: " + err));
+    const token = document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+    axios.post(url, {product: {name: this.state.input, cart_id: this.props.selectedCart.id}})
+      // .then(resp => this.displayNewEntry(data.name))
+      .then(resp => this.displayNewEntry(resp.data.name))
+      .catch(error => console.log(error))
   }
 
   handleChange = (e) => {
@@ -45,11 +43,13 @@ class CartShow extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                   <label>
                     Nom:
-                    <input type="text" onChange={this.handleChange}/>
+                    <input id="form_input" type="text" onChange={this.handleChange}/>
                   </label>
                   <input type="submit" value="Submit" className='btn btn-primary' />
                 </form>
-                {this.props.selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
+                <div id="product_list">
+                  {this.props.selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
+                </div>
               </div>
     }
   }
