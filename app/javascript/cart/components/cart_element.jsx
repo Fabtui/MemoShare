@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios'
-import { selectCart, selectProducts } from '../actions/index'
+import { selectCart, selectProducts, setCarts } from '../actions/index'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,12 +13,16 @@ class CartElement extends React.Component {
     this.props.selectProducts(this.props.products.filter(product => product.cart_id == this.props.cart.id))
   }
 
+  updateCarts = () => {
+    this.props.setCarts()
+  }
+
   destroyCart = () => {
     const url = `/carts/${this.props.cart.id}`;
     const token = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = token
     axios.delete(url)
-      .then(resp => console.log(resp))
+      .then(this.updateCarts)
       .catch(error => console.log(error))
   }
 
@@ -34,7 +38,8 @@ class CartElement extends React.Component {
 function mapDispatchToProps(dispach) {
   return bindActionCreators(
     { selectCart: selectCart,
-      selectProducts: selectProducts
+      selectProducts: selectProducts,
+      setCarts: setCarts
     },
     dispach
   );
