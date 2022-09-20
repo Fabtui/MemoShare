@@ -1,6 +1,6 @@
 const SET_CARTS = 'SET_CARTS'
 
-const cartsIndexReducer = (state, action) => {
+const setCartsReducer = (state, action) => {
  if (state === undefined) {
  return [];
  }
@@ -11,4 +11,4 @@ const cartsIndexReducer = (state, action) => {
     return state;
  }
 };
-export default cartsIndexReducer;
+export default setCartsReducer;

@@ -13,7 +13,7 @@ class ProductShow extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    this.props.selectProducts(nextProps.products)
+    // this.props.selectProducts(nextProps.products.filter(product => product.cart_id == this.props.selectedCart.id))
   }
 
   destroyProduct = () => {
@@ -42,7 +42,8 @@ function mapDispatchToProps(dispach) {
 function mapStateToProps(reduxState) {
   return {
     products: reduxState.products,
-    selectProducts: reduxState.selectProducts
+    selectProducts: reduxState.selectProducts,
+    // selectedCart: selectedCart
   }
 }
 

@@ -2,14 +2,14 @@ import React from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ProductShow from '../components/product_show'
-import { setProducts, selectProducts } from '../actions/index';
+import { setProducts } from '../actions/index';
 import axios from 'axios'
 
 class CartShow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      input: null
+      input: null,
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -17,10 +17,6 @@ class CartShow extends React.Component {
   updateCart = () => {
     document.querySelector('#form_input').value = ''
     this.props.setProducts()
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.props.selectProducts(nextProps.products)
   }
 
   handleSubmit = (e) => {
@@ -41,6 +37,7 @@ class CartShow extends React.Component {
 
   render () {
     if (this.props.selectedCart) {
+      const selectedProducts = this.props.products.filter(product => product.cart_id == this.props.selectedCart.id)
       const dateString = new Date(this.props.selectedCart.created_at).toDateString();
       return  <div>
                 <h4 id={this.props.selectedCart.id}>{dateString}</h4>
@@ -52,7 +49,7 @@ class CartShow extends React.Component {
                   <input type="submit" value="Submit" className='btn btn-primary' />
                 </form>
                 <div id="product_list">
-                  {this.props.selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
+                  {selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
                 </div>
               </div>
     }
@@ -62,15 +59,13 @@ class CartShow extends React.Component {
 function mapStateToProps(reduxState) {
   return {
     products: reduxState.products,
-    selectedCart: reduxState.selectedCart,
-    selectedProducts: reduxState.selectedProducts
+    selectedCart: reduxState.selectedCart
   }
 }
 
 function mapDispatchToProps(dispach) {
   return bindActionCreators(
     {setProducts: setProducts,
-    selectProducts: selectProducts
   },
   dispach
   );
