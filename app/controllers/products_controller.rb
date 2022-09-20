@@ -8,6 +8,12 @@ class ProductsController < ApplicationController
     render json: @product
   end
 
+  def destroy
+    puts params[:id]
+    product = Product.find(params[:id])
+    product.destroy
+  end
+
   private
 
   def product_params
