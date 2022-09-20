@@ -8,6 +8,12 @@ class ProductsController < ApplicationController
     render json: @product
   end
 
+  def update
+    product = Product.find(params[:id])
+    product.done = !product.done
+    product.save
+  end
+
   def destroy
     product = Product.find(params[:id])
     product.destroy
