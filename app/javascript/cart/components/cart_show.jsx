@@ -1,6 +1,8 @@
 import React from 'react'
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ProductShow from '../components/product_show'
+import { setProducts, selectProducts } from '../actions/index';
 import axios from 'axios'
 
 class CartShow extends React.Component {
@@ -13,9 +15,12 @@ class CartShow extends React.Component {
   }
 
   displayNewEntry = (name) => {
-    const productList = document.querySelector('#product_list')
-    productList.insertAdjacentHTML('beforeend', `<h1>${name}</h1>`)
     document.querySelector('#form_input').value = ''
+    this.props.setProducts()
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.props.selectProducts(nextProps.products)
   }
 
   handleSubmit = (e) => {
@@ -56,10 +61,20 @@ class CartShow extends React.Component {
 
 function mapStateToProps(reduxState) {
   return {
+    products: reduxState.products,
     selectedCart: reduxState.selectedCart,
     selectedProducts: reduxState.selectedProducts
   }
 }
 
+function mapDispatchToProps(dispach) {
+  return bindActionCreators(
+    {setProducts: setProducts,
+    selectProducts: selectProducts
+  },
+  dispach
+  );
+}
 
-export default connect(mapStateToProps)(CartShow)
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartShow)
