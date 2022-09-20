@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    puts params[:id]
     product = Product.find(params[:id])
     product.destroy
   end
