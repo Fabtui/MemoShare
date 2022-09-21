@@ -1,5 +1,5 @@
 import React from 'react'
-import { setCarts, setProducts } from '../actions/index';
+import { setCarts, setProducts, selectCart } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CartElement from '../components/cart_element';
@@ -19,6 +19,12 @@ class CartIndex extends React.Component {
     this.props.setCarts()
   }
 
+  handleChange = (e) => {
+    if (e.target.value == 0) {return}
+    const cart = this.props.carts.find(cart => cart.id == e.target.value);
+    this.props.selectCart(cart)
+  }
+
   createCart = () => {
     const url = `/carts`;
     const token = document.querySelector('[name=csrf-token]').content
@@ -31,7 +37,15 @@ class CartIndex extends React.Component {
   render () {
     return <div className='app__container'>
         <FontAwesomeIcon onClick={this.createCart} icon={faPlus} />
-        {this.props.carts.map(cart => <CartElement key={cart.id} cart={cart}/>)}
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <label className="input-group-text" htmlFor="inputGroupSelect01">Paniers</label>
+          </div>
+          <select onChange={this.handleChange} className="custom-select" id="inputGroupSelect01">
+            <option defaultValue value={0}>Choisir...</option>
+            {this.props.carts.map(cart => <CartElement key={cart.id} cart={cart}/>)}
+          </select>
+        </div>
       </div>
   }
 }
@@ -39,7 +53,8 @@ class CartIndex extends React.Component {
 function mapDispatchToProps(dispach) {
   return bindActionCreators(
     { setCarts: setCarts,
-      setProducts: setProducts
+      setProducts: setProducts,
+      selectCart:selectCart,
   },
   dispach
   );
@@ -48,7 +63,7 @@ function mapDispatchToProps(dispach) {
 function mapStateToProps(reduxState) {
   return {
     carts: reduxState.carts,
-    products: reduxState.products
+    products: reduxState.products,
   }
 }
 
