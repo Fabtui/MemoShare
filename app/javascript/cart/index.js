@@ -1,15 +1,15 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux';
 import reduxPromise from 'redux-promise';
 import { createRoot } from 'react-dom/client';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import setCartsReducer from './reducers/set_carts_reducer'
 import selectCartReducer from './reducers/cart_select_reducer'
 import setProductsReducer from './reducers/set_product_reducer'
 import CartIndex from './containers/cart_index'
-import CartShow from './components/cart_show'
+import CartShow from './containers/cart_show'
 
 const reducers = combineReducers({
   carts: setCartsReducer,
