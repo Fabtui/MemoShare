@@ -10,3 +10,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  height: 100vh;
+  background: linear-gradient(0deg, rgba(233, 233, 233, 1) 0%, rgba(255, 255, 255, 1) 46%, rgba(231, 231, 231, 1) 100%);
+}

@@ -1,5 +1,7 @@
 .cart__show {
   height: 85vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .product__content {
@@ -30,7 +32,7 @@
   width: 100%;
   border-radius: 0 0 4px 4px;
   padding: 24px;
-  height: 72vh;
+  height: 70vh;
   overflow-y: scroll;
   svg {
     color: rgba(0, 0, 0, 0.5);
@@ -54,11 +56,9 @@
 }
 
 .cart__show__form {
-  width: 95%;
+  margin-top: auto;
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 24px;
   #form_input {
     margin-right: 24px;
   }
