@@ -3224,11 +3224,6 @@ follow-redirects@^1.0.0, follow-redirects@^1.14.9:
   resolved "https://registry.npmmirror.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
 
-fontawesome-react@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmmirror.com/fontawesome-react/-/fontawesome-react-2.0.0.tgz#8ffb4e989e90031030548df3883bf51874a9d3bf"
-  integrity sha512-3dbzJ5pDWrLewmDPEmMDsP9q+w5bYvghwSci2uJlcFoWI29FVW7R3UfD06JVic+hlcPJlgf5z8uGRjfTrn33+Q==
-
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmmirror.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
