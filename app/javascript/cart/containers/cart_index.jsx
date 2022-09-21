@@ -36,17 +36,21 @@ class CartIndex extends React.Component {
 
   render () {
     return <div className='app__container'>
-        <FontAwesomeIcon onClick={this.createCart} icon={faPlus} />
-        <div className="input-group mb-3">
-          <div className="input-group-prepend">
-            <label className="input-group-text" htmlFor="inputGroupSelect01">Paniers</label>
-          </div>
-          <select onChange={this.handleChange} className="custom-select" id="inputGroupSelect01">
-            <option defaultValue value={0}>Choisir...</option>
-            {this.props.carts.map(cart => <CartElement key={cart.id} cart={cart}/>)}
-          </select>
-        </div>
-      </div>
+            <div className="header">
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <label className="input-group-text" htmlFor="inputGroupSelect01">Paniers</label>
+                </div>
+                <select onChange={this.handleChange} className="custom-select" id="inputGroupSelect01">
+                  <option defaultValue value={0}>Choisir...</option>
+                  {this.props.carts.map(cart => <CartElement key={cart.id} cart={cart}/>)}
+                </select>
+              </div>
+                <div className="header__add">
+                  <FontAwesomeIcon onClick={this.createCart} icon={faPlus} />
+                </div>
+              </div>
+            </div>
   }
 }
 

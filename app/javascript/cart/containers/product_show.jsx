@@ -33,7 +33,9 @@ class ProductShow extends React.Component {
   render () {
     const doneClass = this.props.product.done ? 'product__done' : 'product__undone'
     return <React.Fragment>
-             <h1 onClick={this.handleClick} className={doneClass}>{this.props.product.name} <FontAwesomeIcon onClick={this.destroyProduct} icon={faTrash} /></h1>
+             <div className="product__item">
+               <h4 onClick={this.handleClick} className={doneClass}>- {this.props.product.name}</h4> <FontAwesomeIcon onClick={this.destroyProduct} icon={faTrash} />
+             </div>
            </React.Fragment>
   }
 }
