@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setProducts } from '../actions/index'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 class ProductShow extends React.Component {
@@ -34,7 +34,10 @@ class ProductShow extends React.Component {
     const doneClass = this.props.product.done ? 'product__done' : 'product__undone'
     return <React.Fragment>
              <div className="product__item">
-               <h4 onClick={this.handleClick} className={doneClass}>- {this.props.product.name}</h4> <FontAwesomeIcon onClick={this.destroyProduct} icon={faTrash} />
+                <div className="product__item__content">
+                  <span>- </span><h4 onClick={this.handleClick} className={doneClass}>{this.props.product.name}</h4>
+                </div>
+                <FontAwesomeIcon onClick={this.destroyProduct} icon={faXmark} />
              </div>
            </React.Fragment>
   }
