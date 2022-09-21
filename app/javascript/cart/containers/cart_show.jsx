@@ -53,12 +53,14 @@ class CartShow extends React.Component {
       const selectedProducts = this.props.products.filter(product => product.cart_id == this.props.selectedCart.id)
       const dateString = new Date(this.props.selectedCart.created_at).toDateString();
       return  <div className='cart__show container'>
-                <div className="cart__show__header">
-                  <h4 id={this.props.selectedCart.id}>{dateString}</h4>
-                  <FontAwesomeIcon onClick={this.destroyCart} icon={faXmark} />
-                </div>
-                <div id="product__list">
-                  {selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
+                <div className="product__content">
+                  <div className="cart__show__header">
+                    <h4 id={this.props.selectedCart.id}>{dateString}</h4>
+                    <FontAwesomeIcon onClick={this.destroyCart} icon={faXmark} />
+                  </div>
+                  <div id="product__list">
+                    {selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
+                  </div>
                 </div>
                 <div className="cart__show__form">
                   <form onSubmit={this.handleSubmit}>

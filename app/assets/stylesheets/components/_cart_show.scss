@@ -2,27 +2,55 @@
   height: 85vh;
 }
 
+.product__content {
+  background-image: image-url('paper.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+}
+
+
 .cart__show__header {
-  background-color: antiquewhite;
-  border-radius: 4px 4px 0 0;
   padding-top: 24px;
   display: flex;
   justify-content: space-around;
   align-items: baseline;
+  svg {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  h4 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    text-decoration: underline;
+  }
 }
 
 #product__list {
+  width: 100%;
   border-radius: 0 0 4px 4px;
-  background-color: antiquewhite;
   padding: 24px;
   height: 72vh;
   overflow-y: scroll;
+  svg {
+    color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .product__item {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+}
+
+.product__item__content {
+  display: flex;
+  h4 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-left: 8px;
+  }
 }
 
 .cart__show__form {

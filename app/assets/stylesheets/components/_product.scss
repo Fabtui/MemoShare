@@ -1,8 +1,8 @@
 .product__done {
   text-decoration: line-through;
-  color: black;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .product__undone {
-  color: $primary;
+  color: black;
 }
