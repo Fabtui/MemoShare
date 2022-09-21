@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ProductShow from './product_show'
 import { setProducts, setCarts, selectCart } from '../actions/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 class CartShow extends React.Component {
@@ -52,17 +52,19 @@ class CartShow extends React.Component {
     if (this.props.selectedCart) {
       const selectedProducts = this.props.products.filter(product => product.cart_id == this.props.selectedCart.id)
       const dateString = new Date(this.props.selectedCart.created_at).toDateString();
-      return  <div>
-                <h4 id={this.props.selectedCart.id}>{dateString}</h4><FontAwesomeIcon onClick={this.destroyCart} icon={faTrash} />
-                <form onSubmit={this.handleSubmit}>
-                  <label>
-                    Nom:
-                    <input id="form_input" type="text" onChange={this.handleChange}/>
-                  </label>
-                  <input type="submit" value="Submit" className='btn btn-primary' />
-                </form>
-                <div id="product_list">
+      return  <div className='cart__show container'>
+                <div className="cart__show__header">
+                  <h4 id={this.props.selectedCart.id}>{dateString}</h4>
+                  <FontAwesomeIcon onClick={this.destroyCart} icon={faXmark} />
+                </div>
+                <div id="product__list">
                   {selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
+                </div>
+                <div className="cart__show__form">
+                  <form onSubmit={this.handleSubmit}>
+                    <input id="form_input" type="text" onChange={this.handleChange}/>
+                    <input type="submit" value="Ajouter" className='btn btn-primary' />
+                  </form>
                 </div>
               </div>
     }

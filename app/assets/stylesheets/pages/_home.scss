@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+.app__container {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.header__add {
+  margin-left: 20px;
+}
