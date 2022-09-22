@@ -6,6 +6,8 @@ import { setProducts, setCarts, selectCart } from '../actions/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import swal from 'sweetalert';
+
 
 class CartShow extends React.Component {
   constructor(props) {
@@ -32,6 +34,25 @@ class CartShow extends React.Component {
       .catch(error => console.log(error))
   }
 
+  sweetalert = () => {
+    swal({
+      title: "Es-tu sûre?",
+      text: "",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Poof! Your imaginary file has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+  }
+
   destroyCart = () => {
     const url = `/carts/${this.props.selectedCart.id}`;
     const token = document.querySelector('[name=csrf-token]').content
@@ -56,7 +77,7 @@ class CartShow extends React.Component {
                 <div className="product__content">
                   <div className="cart__show__header">
                     <h4 id={this.props.selectedCart.id}>{dateString}</h4>
-                    <FontAwesomeIcon onClick={this.destroyCart} icon={faXmark} />
+                    <FontAwesomeIcon onClick={this.sweetalert} icon={faXmark} />
                   </div>
                   <div id="product__list">
                     {selectedProducts.map(product => <ProductShow product={product} key= {product.id}/>)}
