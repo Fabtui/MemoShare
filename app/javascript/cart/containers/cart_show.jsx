@@ -34,6 +34,15 @@ class CartShow extends React.Component {
       .catch(error => console.log(error))
   }
 
+  destroyCart = () => {
+    const url = `/carts/${this.props.selectedCart.id}`;
+    const token = document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+    axios.delete(url)
+      .then(this.updateCart)
+      .catch(error => console.log(error))
+  }
+
   sweetalert = () => {
     swal({
       title: "Es-tu sûre?",
@@ -44,24 +53,15 @@ class CartShow extends React.Component {
     })
     .then((willDelete) => {
       if (willDelete) {
-        swal("Poof! Your imaginary file has been deleted!", {
+        this.destroyCart()
+        swal("Panier supprimé!", {
           icon: "success",
         });
       } else {
-        swal("Your imaginary file is safe!");
+        swal("Panier conservé!");
       }
     });
   }
-
-  destroyCart = () => {
-    const url = `/carts/${this.props.selectedCart.id}`;
-    const token = document.querySelector('[name=csrf-token]').content
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
-    axios.delete(url)
-      .then(this.updateCart)
-      .catch(error => console.log(error))
-  }
-
 
   handleChange = (e) => {
     this.setState({
