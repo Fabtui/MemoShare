@@ -69,14 +69,20 @@ class CartShow extends React.Component {
     })
   }
 
+  updateTitle = () => {
+    console.log('update');
+  }
+
   render () {
-    if (this.props.selectedCart) {
-      const selectedProducts = this.props.products.filter(product => product.cart_id == this.props.selectedCart.id)
-      const dateString = new Date(this.props.selectedCart.created_at).toDateString();
+    const selected_cart = this.props.selectedCart
+    if (selected_cart) {
+      const selectedProducts = this.props.products.filter(product => product.cart_id == selected_cart.id)
+      const dateString = new Date(selected_cart.created_at).toDateString();
+      const title = selected_cart.title ? selected_cart.title : dateString
       return  <div className='cart__show container'>
                 <div className="product__content">
                   <div className="cart__show__header">
-                    <h4 id={this.props.selectedCart.id}>{this.props.selectedCart.title ? this.props.selectedCart.title : dateString}</h4>
+                    <h4 onClick={this.updateTitle} id={selected_cart.id}>{title}</h4>
                     <FontAwesomeIcon onClick={this.sweetalert} icon={faXmark} />
                   </div>
                   <div id="product__list">
