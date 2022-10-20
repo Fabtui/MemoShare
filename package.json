@@ -1,5 +1,10 @@
 {
   "name": "app",
+  "description": "memo sharing app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.15.5"
+  },
   "private": "true",
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
