@@ -76,7 +76,7 @@ class CartShow extends React.Component {
       return  <div className='cart__show container'>
                 <div className="product__content">
                   <div className="cart__show__header">
-                    <h4 id={this.props.selectedCart.id}>{dateString}</h4>
+                    <h4 id={this.props.selectedCart.id}>{this.props.selectedCart.title ? this.props.selectedCart.title : dateString}</h4>
                     <FontAwesomeIcon onClick={this.sweetalert} icon={faXmark} />
                   </div>
                   <div id="product__list">

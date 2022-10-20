@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   end
 
   def create
-    @cart = Cart.create
+    @cart = Cart.create(title: Time.now.strftime('%d-%m-%Y'))
     render json: @cart
   end
 
