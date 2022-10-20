@@ -23,7 +23,7 @@ class TitleUpdateInput extends React.Component {
     const token = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = token
     axios.patch(url, {title: this.state.title})
-    .then(this.props.updateCart)
+    // .then(this.props.updateCart)
     .then(this.props.cancelChange)
     .catch(error => console.log(error))
   }
@@ -34,14 +34,11 @@ class TitleUpdateInput extends React.Component {
 
   render () {
     const title = this.state.title
-    return <React.Fragment>
-            <form action="/action_page.php">
-              {/* <label for="fname">First name:</label> */}
+    return <div className='update__title__container'>
               <input onChange={this.handleChange} type="text" id="fname" name="fname" defaultValue={title}/>
               <div onClick={this.updateTitle} className='btn btn-primary'>O</div>
               <div onClick={this.cancelChange} className='btn btn-danger'>X</div>
-            </form>
-           </React.Fragment>
+           </div>
   }
 }
 
@@ -50,6 +47,5 @@ function mapStateToProps(reduxState) {
     selectedCart: reduxState.selectedCart
   }
 }
-
 
 export default connect(mapStateToProps)(TitleUpdateInput)

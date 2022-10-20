@@ -34,6 +34,10 @@ class CartShow extends React.Component {
     this.props.setProducts()
   }
 
+  updateTitle = () => {
+    document.querySelector('.cart__title').textContent = this.props.selectedCart.title
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     const url = `/products`;
@@ -80,7 +84,6 @@ class CartShow extends React.Component {
   }
 
   showTitleUpdate = () => {
-    console.log(this.props.selectedCart.id);
     this.setState({
       show_title_update: !this.state.show_title_update,
     })
@@ -103,7 +106,7 @@ class CartShow extends React.Component {
                   <div className="cart__show__header">
                     {this.state.show_title_update ?
                     <TitleUpdateInput updateCart={this.updateCart} cancelChange={this.cancelTitleUpdate}/> :
-                    <h4 onClick={this.showTitleUpdate} id={selected_cart.id}>{title}</h4>
+                    <h4 className='cart__title' onClick={this.showTitleUpdate} id={selected_cart.id}>{title}</h4>
                     }
                     <FontAwesomeIcon onClick={this.sweetalert} icon={faXmark} />
                   </div>
