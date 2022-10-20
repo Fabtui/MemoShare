@@ -126,6 +126,7 @@ function mapDispatchToProps(dispach) {
   return bindActionCreators(
     {setProducts: setProducts,
      setCarts: setCarts,
+     selectCart:selectCart,
   },
   dispach
   );

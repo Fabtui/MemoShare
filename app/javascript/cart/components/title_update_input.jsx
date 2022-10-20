@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 class TitleUpdateInput extends React.Component {
 
   render () {
-    // const title = this.props.selectCart.title ? this.props.selectCart.title : dateString
+    const selected_cart = this.props.selectedCart
+    const dateString = new Date(selected_cart.created_at).toDateString();
+    const title = selected_cart.title ? selected_cart.title : dateString
+    console.log(title);
+    console.log(selected_cart.title);
     return <React.Fragment>
             <form action="/action_page.php">
               {/* <label for="fname">First name:</label> */}
-              <input type="text" id="fname" name="fname" value='title'/>
+              <input type="text" id="fname" name="fname" value={title}/>
             </form>
            </React.Fragment>
   }
@@ -16,8 +20,9 @@ class TitleUpdateInput extends React.Component {
 
 function mapStateToProps(reduxState) {
   return {
-    selectCart: reduxState.selectCart,
+    selectedCart: reduxState.selectedCart
   }
 }
+
 
 export default connect(mapStateToProps)(TitleUpdateInput)
