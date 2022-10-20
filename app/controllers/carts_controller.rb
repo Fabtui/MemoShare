@@ -8,6 +8,12 @@ class CartsController < ApplicationController
     render json: @cart
   end
 
+  def update
+    cart = Cart.find(params[:id])
+    cart.title = params[:title]
+    cart.save
+  end
+
   def destroy
     cart = Cart.find(params[:id])
     cart.destroy
