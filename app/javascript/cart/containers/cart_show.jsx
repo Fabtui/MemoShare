@@ -19,6 +19,7 @@ class CartShow extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.showTitleUpdate = this.showTitleUpdate.bind(this)
+    this.cancelTitleUpdate = this.cancelTitleUpdate.bind(this)
   }
 
   UNSAFE_componentWillReceiveProps = () => {
@@ -85,6 +86,12 @@ class CartShow extends React.Component {
     })
   }
 
+  cancelTitleUpdate = () => {
+    this.setState({
+      show_title_update: false,
+    })
+  }
+
   render () {
     const selected_cart = this.props.selectedCart
     if (selected_cart) {
@@ -95,7 +102,7 @@ class CartShow extends React.Component {
                 <div className="product__content">
                   <div className="cart__show__header">
                     {this.state.show_title_update ?
-                    <TitleUpdateInput/> :
+                    <TitleUpdateInput cancelChange={this.cancelTitleUpdate}/> :
                     <h4 onClick={this.showTitleUpdate} id={selected_cart.id}>{title}</h4>
                     }
                     <FontAwesomeIcon onClick={this.sweetalert} icon={faXmark} />
