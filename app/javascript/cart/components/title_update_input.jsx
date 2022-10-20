@@ -23,7 +23,7 @@ class TitleUpdateInput extends React.Component {
     const token = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = token
     axios.patch(url, {title: this.state.title})
-    // .then(this.props.updateCart)
+    .then(this.props.updateCart)
     .then(this.props.cancelChange)
     .catch(error => console.log(error))
   }
