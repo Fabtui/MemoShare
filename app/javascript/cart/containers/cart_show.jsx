@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ProductShow from './product_show'
+import TitleUpdateInput from '../components/title_update_input'
 import { setProducts, setCarts, selectCart } from '../actions/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -14,8 +15,16 @@ class CartShow extends React.Component {
     super(props)
     this.state = {
       input: null,
+      show_title_update: false,
     }
     this.handleChange = this.handleChange.bind(this)
+    this.showTitleUpdate = this.showTitleUpdate.bind(this)
+  }
+
+  UNSAFE_componentWillReceiveProps = () => {
+    this.setState({
+      show_title_update: false,
+    })
   }
 
   updateCart = () => {
@@ -69,8 +78,11 @@ class CartShow extends React.Component {
     })
   }
 
-  updateTitle = () => {
-    console.log('update');
+  showTitleUpdate = () => {
+    console.log(this.props.selectedCart.id);
+    this.setState({
+      show_title_update: !this.state.show_title_update,
+    })
   }
 
   render () {
@@ -82,7 +94,10 @@ class CartShow extends React.Component {
       return  <div className='cart__show container'>
                 <div className="product__content">
                   <div className="cart__show__header">
-                    <h4 onClick={this.updateTitle} id={selected_cart.id}>{title}</h4>
+                    {this.state.show_title_update ?
+                    <TitleUpdateInput/> :
+                    <h4 onClick={this.showTitleUpdate} id={selected_cart.id}>{title}</h4>
+                    }
                     <FontAwesomeIcon onClick={this.sweetalert} icon={faXmark} />
                   </div>
                   <div id="product__list">
@@ -111,7 +126,6 @@ function mapDispatchToProps(dispach) {
   return bindActionCreators(
     {setProducts: setProducts,
      setCarts: setCarts,
-     selectCart: selectCart
   },
   dispach
   );
