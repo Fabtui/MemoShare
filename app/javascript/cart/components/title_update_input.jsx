@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import axios from 'axios'
 
 class TitleUpdateInput extends React.Component {
   constructor(props) {
@@ -18,7 +19,13 @@ class TitleUpdateInput extends React.Component {
   }
 
   updateTitle = () => {
-    console.log(this.state.title);
+    const url = `/carts/${this.props.selectedCart.id}`;
+    const token = document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+    axios.patch(url, {title: this.state.title})
+    .then(this.props.updateCart)
+    .then(this.props.cancelChange)
+    .catch(error => console.log(error))
   }
 
   cancelChange = () => {
@@ -26,9 +33,7 @@ class TitleUpdateInput extends React.Component {
   }
 
   render () {
-    const selected_cart = this.props.selectedCart
-    const dateString = new Date(selected_cart.created_at).toDateString();
-    const title = selected_cart.title ? selected_cart.title : dateString
+    const title = this.state.title
     return <React.Fragment>
             <form action="/action_page.php">
               {/* <label for="fname">First name:</label> */}

@@ -102,7 +102,7 @@ class CartShow extends React.Component {
                 <div className="product__content">
                   <div className="cart__show__header">
                     {this.state.show_title_update ?
-                    <TitleUpdateInput cancelChange={this.cancelTitleUpdate}/> :
+                    <TitleUpdateInput updateCart={this.updateCart} cancelChange={this.cancelTitleUpdate}/> :
                     <h4 onClick={this.showTitleUpdate} id={selected_cart.id}>{title}</h4>
                     }
                     <FontAwesomeIcon onClick={this.sweetalert} icon={faXmark} />
