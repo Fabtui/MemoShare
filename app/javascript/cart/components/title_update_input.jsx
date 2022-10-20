@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 class TitleUpdateInput extends React.Component {
   constructor(props) {
@@ -25,7 +27,6 @@ class TitleUpdateInput extends React.Component {
     axios.patch(url, {title: this.state.title})
     .then(this.props.updateCart)
     .then(this.props.cancelChange)
-    .catch(error => console.log(error))
   }
 
   cancelChange = () => {
@@ -36,8 +37,8 @@ class TitleUpdateInput extends React.Component {
     const title = this.state.title
     return <div className='update__title__container'>
               <input onChange={this.handleChange} type="text" id="fname" name="fname" defaultValue={title}/>
-              <div onClick={this.updateTitle} className='btn btn-primary'>O</div>
-              <div onClick={this.cancelChange} className='btn btn-danger'>X</div>
+              <div onClick={this.updateTitle} className='title__update__btn check__btn'><FontAwesomeIcon icon={faCheck} /></div>
+              <div onClick={this.cancelChange} className='title__update__btn mark__btn'><FontAwesomeIcon icon={faXmark} /></div>
            </div>
   }
 }

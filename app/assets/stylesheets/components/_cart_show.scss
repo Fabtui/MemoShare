@@ -24,7 +24,7 @@
   h4 {
     font-family: 'Dancing Script', cursive;
     font-weight: 600;
-    text-decoration: underline;
+    font-size: 2rem;
   }
 }
 
@@ -61,5 +61,34 @@
   justify-content: center;
   #form_input {
     margin-right: 24px;
+  }
+}
+
+.update__title__container {
+  display: flex;
+  input {
+    background-color: #ffffff83;
+    border: none;
+    height: 3rem;
+    padding-left: 1rem;
+    border-radius: 4px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    font-size: 2rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  .title__update__btn {
+    margin-left: 0.5rem;
+    width: 3.5rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    font-size: 1.3rem;
   }
 }
