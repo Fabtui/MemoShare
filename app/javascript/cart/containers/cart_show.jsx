@@ -117,7 +117,7 @@ class CartShow extends React.Component {
                 <div className="cart__show__form">
                   <form onSubmit={this.handleSubmit}>
                     <input id="form_input" type="text" onChange={this.handleChange}/>
-                    <input type="submit" value="Ajouter" className='btn btn-secondary' />
+                    <input type="submit" value="Ajouter" className='btn' />
                   </form>
                 </div>
               </div>

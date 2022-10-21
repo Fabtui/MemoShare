@@ -39,7 +39,7 @@ class CartIndex extends React.Component {
             <div className="header">
               <div className="input-group">
                 <div className="input-group-prepend">
-                  <label className="input-group-text" htmlFor="inputGroupSelect01">Paniers</label>
+                  <label className="input-group-text" htmlFor="inputGroupSelect01">Paniers :</label>
                 </div>
                 <select onChange={this.handleChange} className="custom-select" id="inputGroupSelect01">
                   <option defaultValue value={0}>Choisir...</option>
