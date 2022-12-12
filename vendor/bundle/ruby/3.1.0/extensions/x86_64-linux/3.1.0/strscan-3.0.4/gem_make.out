@@ -1,0 +1,16 @@
+current directory: /home/fabrice/code/Fabtui/Perso/ShopingList/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.4/ext/strscan
+/home/fabrice/.rbenv/versions/3.1.2/bin/ruby -I /home/fabrice/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20221212-12830-6pc6ad.rb extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+creating Makefile
+
+current directory: /home/fabrice/code/Fabtui/Perso/ShopingList/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.4/ext/strscan
+make DESTDIR\= clean
+
+current directory: /home/fabrice/code/Fabtui/Perso/ShopingList/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.4/ext/strscan
+make DESTDIR\=
+compiling strscan.c
+linking shared-object strscan.so
+
+current directory: /home/fabrice/code/Fabtui/Perso/ShopingList/vendor/bundle/ruby/3.1.0/gems/strscan-3.0.4/ext/strscan
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 strscan.so ./.gem.20221212-12830-gf2cvl
