@@ -3,7 +3,7 @@
   "description": "memo sharing app",
   "version": "1.0.0",
   "engines": {
-    "node": "16.15.1"
+    "node": "16.13.1"
   },
   "private": "true",
   "dependencies": {
